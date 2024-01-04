@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:final_capstone_furcare/Pages/login_page.dart';
+import 'package:final_capstone_furcare/Pages/Staff_Page/staff_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert' as convert;
@@ -37,7 +37,7 @@ class _LoadingAState extends State<LoadingA> {
       //       MaterialPageRoute(builder: (_) => HomePage()));
       // }
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) => LoginPage()));
+          MaterialPageRoute(builder: (_) => StaffPage()));
     });
 
   }

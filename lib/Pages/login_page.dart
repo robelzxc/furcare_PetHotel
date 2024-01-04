@@ -3,6 +3,7 @@ import 'package:final_capstone_furcare/Pages/register.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -135,6 +136,10 @@ class _LoginPageState extends State<LoginPage> {
       var details = convert.jsonDecode(response.body);
 
       if (response.statusCode == 200) {
+        print(details);
+        SharedPreferences localStorage = await SharedPreferences.getInstance();
+        localStorage.setString('token', details['code']);
+        localStorage.setString('data', convert.jsonEncode(details['data']));
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => LoadingA()));
         _showMsg(details['message']);

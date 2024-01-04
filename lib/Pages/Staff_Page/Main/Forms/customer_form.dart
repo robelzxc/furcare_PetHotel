@@ -19,7 +19,7 @@ class _CustomerFormState extends State<CustomerForm> {
   void _getInfo() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     var token = localStorage.getString('token');
-    var userJson = localStorage.getString('user');
+    var userJson = localStorage.getString('data');
     var user = convert.jsonDecode(userJson.toString());
     setState(() {
       userData = user;
@@ -188,6 +188,8 @@ class _CustomerFormState extends State<CustomerForm> {
       var details = convert.jsonDecode(response.body);
 
       if (response.statusCode == 201) {
+        SharedPreferences localStorage = await SharedPreferences.getInstance();
+        localStorage.getString('data');
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => CustomerProfile()));
         _showMsg(details['message']);
